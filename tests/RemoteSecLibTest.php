@@ -77,7 +77,7 @@ class RemoteSecLibGatewayTest extends \PHPUnit\Framework\TestCase
     {
         $gateway = $this->getGateway();
         $gateway->shouldReceive('getNewKey')->andReturn($key = m::mock('StdClass'));
-        $key->shouldReceive('setPassword')->once()->with('keyphrase');
+        $key->shouldReceive('withPassword')->once()->with('keyphrase');
         $key->shouldReceive('loadKey')->once()->with('keystuff');
         $gateway->getConnection()->shouldReceive('login')->with('taylor', $key);
         $gateway->connect('taylor');
@@ -94,7 +94,7 @@ class RemoteSecLibGatewayTest extends \PHPUnit\Framework\TestCase
             ])->makePartial();
         $gateway->shouldReceive('getConnection')->andReturn(m::mock('StdClass'));
         $gateway->shouldReceive('getNewKey')->andReturn($key = m::mock('StdClass'));
-        $key->shouldReceive('setPassword')->once()->with(null);
+        $key->shouldReceive('withPassword')->once()->with(null);
         $key->shouldReceive('loadKey')->once()->with('keystuff');
         $gateway->getConnection()->shouldReceive('login')->with('taylor', $key);
         $gateway->connect('taylor');

@@ -206,7 +206,7 @@ class SecLibGateway implements GatewayInterface
      */
     protected function getKey(array $auth)
     {
-        with($key = $this->getNewKey())->setPassword(Arr::get($auth, 'keyphrase'));
+        with($key = $this->getNewKey())->withPassword(Arr::get($auth, 'keyphrase'));
 
         return $key;
     }

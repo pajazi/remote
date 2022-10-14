@@ -382,7 +382,7 @@ class SecLibGateway implements GatewayInterface
      */
     public function nextLine()
     {
-        $value = $this->getConnection()->read("", SSH2::READ_NEXT);
+        $value = $this->getConnection()->ping();
 
         return $value === true ? null : $value;
     }
